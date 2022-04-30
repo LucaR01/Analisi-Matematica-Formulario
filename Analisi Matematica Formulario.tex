@@ -1,0 +1,592 @@
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\makeatletter
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{Analisi Matematica Formulario}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{comment}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.45in
+\advance\evensidemargin-1.45in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+
+\begin{document}
+		
+	
+	\begin{center}{\huge{\textbf{Analisi Matematica Formulario}}}\\
+	\end{center}
+	\begin{multicols*}{2}
+		
+		\tikzstyle{mybox} = [draw=black, fill=white, very thick, %era black
+		rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+		\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries] %era black
+		
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					
+					\begin{tabular}{lp{8cm} l}
+						$i^2 = -1$\\
+						\textbf{Forma Algebrica}:\\
+						$z = a + ib \hspace{0.3cm} Re(z) = a \text{ parte reale}, Im(z) = b \text{ parte immaginaria}$ \\
+						\textbf{Complesso coniugato}:  $ z = a + ib \rightarrow \overline{z} = a - ib $ \\
+						\textbf{Forma Trigonometrica} $ z = r[\cos\theta + i \cdot \sin\theta]$ \\
+						$ r = \sqrt{a^2 + b^2}$ \\
+						\begin{tabular}{cc}
+							$\theta \in (-\pi, \pi]$: & $\theta \in (0, 2\pi]$: \\
+							$\arctan(\frac{b}{a}) \hspace{.3mm}a > 0, b \text{ qualsiasi}$ & $\arctan(\frac{b}{a}) \hspace{.3mm}a > 0, b \geq 0$ \\
+							$\arctan(\frac{b}{a}) + \pi \hspace{.3mm}a < 0, b \geq 0$ & $\arctan(\frac{b}{a}) + 2\pi \hspace{.3mm}a > 0, b < 0$ \\
+							$\arctan(\frac{b}{a}) - \pi \hspace{.3mm}a < 0, b < 0$ & $\arctan(\frac{b}{a}) + \pi \hspace{.3mm}a < 0, b \text{ qualsiasi}$ \\
+							$\frac{\pi}{2} \hspace{.3mm} a = 0, b > 0 $ & $ \frac{\pi}{2} \hspace{.3mm} a = 0, b > 0 $\\
+							$-\frac{\pi}{2} \hspace{.3mm} a = 0, b < 0 $ & $ \frac{3\pi}{2} \hspace{.3mm} a = 0, b < 0 $\\
+							Non definito $ \hspace{.3mm} a = 0, b = 0 $ & Non definito $ \hspace{.3mm} a = 0, b = 0 $\\
+							\bfseries{Forma esponenziale}: $ z = re^{i\theta}$\\
+							\textbf{Radice n-esima complessa}:\\
+							$\begin{cases}
+								r = \sqrt[n]{a^2 + b^2} \\
+								\theta x = \phi/n + 2k\pi/n\\
+							\end{cases}$	 
+						\end{tabular}
+						
+					\end{tabular}
+					
+				\end{minipage}
+			};
+			%------------ Numeri Complessi Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Numeri Complessi};
+		\end{tikzpicture}
+		
+		
+		%------------ Limiti begin ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Forme Indeterminate}:
+					$ 0^0 \hspace{0.3cm} \frac{\infty}{\infty} \hspace{0.3cm} 0 \cdot \infty \hspace{0.3cm} 1^\infty \hspace{0.3cm} \infty^0 \hspace{0.3cm} \frac{0}{0} \hspace{0.3cm} \infty - \infty$ \\
+					\textbf{Regola di de L'Hopital}: \\
+					$ \text{se } \lim\limits_{x \to a} \frac{f(x)}{g(x)} = \frac{0}{0} \text{ o } \frac{\pm \infty}{\pm \infty} \text{ allora } \lim\limits_{x \to a} \frac{f(x)}{g(x)} = \lim\limits_{x \to a} \frac{f'(x)}{g'(x)}$ \\
+					\textbf{Alcuni Limiti notevoli}: \\
+					$ \lim\limits_{x \to 0} \frac{ln(1 + x)}{x} = 1 \hspace{0.3cm} \lim\limits_{x \to 0} \frac{e^x - 1}{x} = 1 \hspace{0.3cm} \lim\limits_{x \to 0} \frac{a^x - 1}{x} = ln(a) \hspace{0.3cm} \lim\limits_{x \to \pm \infty} (1 + \frac{1}{x})^x = e \hspace{0.3cm} 
+					\lim\limits_{x \to 0} \frac{\sin(x)}{x} = 1 \hspace{0.3cm} \lim\limits_{x \to 0} \frac{1 - \cos(x)}{x^2} = \frac{1}{2} \hspace{0.3cm}$ \\
+				\end{minipage}
+			};
+			%------------ Limiti Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Limiti};
+		\end{tikzpicture}
+		
+		
+		%------------ Polinomio di Taylor Header ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					$ T_n (x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \cdots + \frac{f^n (x_0)}{n!} (x-x_0)^n $ \\
+					\textbf{Fattoriale}: $ n! \rightarrow n \cdot (n-1) $ \\
+					\textbf{Formula di Taylor} \\
+					$ f(x,y) = f(x_0, y_0)+ \bigtriangledown f(x_0, y_0) \cdot (x - x_0, y - y_0) + \frac{1}{2} (x - x_0, y - y_0) H_f(x_0, y_0) \begin{pmatrix}
+						x - x_0 \\
+						y - y_0
+					\end{pmatrix} + o(\mid (x - x_0, y - y_0) \mid^2 ) per (x - x_0, y - y_0) \to (0, 0) $ \\
+					\textbf{Formula di Taylor con Resto di Peano}
+					$ f(x) = T_{c,n}(x) + R_{c,n}(x) $
+					%$ f(x) = T_{c, n}(x) + o((x - c)^n) \textsf{ per } x \to c $ \\
+				\end{minipage}
+			};
+			%------------ Polinomio di Taylor Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Polinomio di Taylor};
+		\end{tikzpicture}
+		
+		
+		%------------ Derivate begin ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth} 
+					\begin{tabular}{cccc}
+						f(x) & f'(x) & f(x) & f'(x) \\
+						k & 0 & $\sin x$ & $\cos x$ \\
+						$x^n$ & $x^{n-1}$ & $ \cos x$ & $ -\sin x$\\
+						$x$ & $1$ & $\tan x  $ & $ \frac{1}{\cos^2 x} = \sec^2 x$\\
+						$\frac{1}{x}$ & $\frac{-1}{x^2}$ & $ \cot x $ & $ -\frac{1}{\sin^2 x} $\\
+						$\sqrt{x}$ & $\frac{1}{2\sqrt{x}}$ & $ \arcsin x $ & $ \frac{1}{\sqrt{1 - x^2}} $\\
+						$\sqrt[n]{x}$ & $\frac{1}{n\sqrt[n]{x^n-1}}$ & $ \arccos x $ & $ -\frac{1}{\sqrt{1 - x^2}} $\\
+						$\lvert x \rvert$ & $\frac{\lvert x \rvert}{x}$ & $ \arctan x$ & $  \frac{1}{1 + x^2}$\\
+						$\log_a x$ & $\frac{1}{x} \cdot \frac{1}{\ln a}$ & $ \text{arccot} x $ & $ -\frac{1}{1 + x^2}$\\
+						\multicolumn{4}{c}{\textbf{Esempi}} \\
+						$\ln x$ & $\frac{1}{x}$ & $ \sin(x^2 + 4)$ & $ 2x \cdot \cos(x^2 + 4) $\\
+						$a^x$ & $a^x \ln a$ & $ e^{x^2 + 2x}$ & $ e^{x^2 + 2x} \cdot (2x + 2)$\\
+						$e^x$ & $e^x$ & $ \arctan(x^2 + 4)$ & $ \frac{1}{(x^2 + 4)^2 + 1} \cdot 2x$\\
+					\end{tabular}
+					
+					\begin{tabular}{ll}
+						\textbf{Derivata di una funzione composta} & \textbf{} \\
+						f(x) & f'(x) \\
+						$\ln(g(x))$ & $\frac{1}{g(x)} \cdot g'(x)$\\
+						$\mid  g(x) \mid$ & $\frac{g(x)}{\mid g(x) \mid} \cdot g'(x)$\\
+						$a^{g(x)}$ & $a^{g(x)} \cdot \ln(a) \cdot g'(x)$\\
+						$[g(x)]^n$ & $n\cdot[g(x)]^{n-1} \cdot g'(x)$\\
+					\end{tabular}
+					
+				\end{minipage}
+			};
+			%------------ Derivate Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Derivate};
+		\end{tikzpicture}
+		
+		
+		%------------ Regole di Derivazione ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\begin{tabular}{lp{8cm} l}
+						\begin{tabular}{ l l }
+							\multicolumn{2}{l}{\textbf{Derivata di una somma}} \\
+							$f(x) + g(x) + h(x)$ & $f'(x) + g'(x) + h'(x)$ \\
+							\multicolumn{2}{l}{\textbf{Prodotto di derivate}} \\
+							$f(x) \cdot  g(x)$ & $f'(x) \cdot g(x) + f(x) \cdot g'(x)$ \\
+							\multicolumn{2}{l}{\textbf{Rapporto di derivate}} \\
+							$\frac{f(x)}{g(x)}$ & $\frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{g(x)^2}$ \\
+							\multicolumn{2}{l}{\textbf{Derivata di una costante}} \\
+							$k \cdot f(x)$ & $k \cdot f'(x)$ \\
+							\multicolumn{2}{l}{\textbf{Derivata di una funzione composta}} \\
+							$f[g(x)]$ & $f'[g(x)]\cdot g'(x)$ \\
+							\multicolumn{2}{l}{\textbf{Derivata di una funzione elevata ad una funzione}} \\
+							$f(x)^{g(x)}$ & $f(x)^{g(x)} \cdot  [g'(x) \cdot  \ln[f(x)] + g(x) \cdot  \frac{f'(x)}{f(x)}]$ \\
+						\end{tabular}
+					\end{tabular} \\
+					
+				\end{minipage}
+			};
+			%------------ Regole di Derivazione Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Regole di Derivazione};
+		\end{tikzpicture}
+		
+		
+		%------------ Integrali ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth} 
+					\begin{tabular}{cccc}
+						f(x) & F(x) [primitiva] & f(x) & F(x) \\
+						$\int 1 \, dx$ & $x + c$ & $ \int \sin x \,dx$ & $ -\cos x + c$\\
+						$\int x^n\,dx $ & $\frac{x^{n+1}}{n+1} + c$ & $\int \cos x \,dx $ & $ \sin x + c$\\
+						$\int \frac{1}{x} \,dx$ & $\ln \lvert x \rvert + c$ & $\int \frac{1}{\cos^2 x} \,dx $ & $ \tan x + c$\\
+						$\int a\,dx$ & $ax + c$ & $ \int \frac{1}{\sin^2 x} \,dx$ & $ -\cot x + c $\\
+						$\int a^x\,dx$ & $\frac{a^x}{\ln a} + c$ & $ \int \tan^2 x \,dx$ & $ \int \frac{1}{\cos^2 x} = \tan x + c $\\
+						$\int e^x$ & $e^x + c$ & $ \int \cot^2 x \,dx $ & $ \int \frac{1}{\sin^2 x} = \cot x + c $\\
+						$\int e^{kx} $ & $\frac{e^{kx}}{k} + c$ & $ \int \frac{1}{1 + x^2}\,dx $ & $ \arctan x + c$\\
+					\end{tabular}
+				\end{minipage}
+			};
+			%------------ Integrali ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Integrali};
+		\end{tikzpicture}
+		
+		
+		%------------ Regole di Integrazione begin ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\begin{tabular}{ l l }
+						\multicolumn{2}{l}{\textbf{In generale}} \\
+						$\int f[g(x)] \cdot g'(x) \,dx$ & $F[g(x)] + c$ \\
+						\multicolumn{2}{l}{\textbf{Prodotto di una costante k}} \\
+						$\int k \cdot f(x) \, dx$ & $ k \cdot \int f(x) \, dx $ \\
+						\multicolumn{2}{l}{\textbf{Somma di due o più funzioni}} \\
+						$ \int f(x) \pm g(x) \pm h(x) \, dx$ & $ \int f(x) \,dx \pm \int g(x) \, dx \pm \int h(x) \, dx$ \\
+						\multicolumn{2}{l}{\textbf{Integrazione per parti}} \\
+						$\int f(x) \cdot g(x) \, dx $ & $ F(x)g(x) - \int F(x) \cdot g'(x) \, dx $ \\
+						\multicolumn{2}{l}{\textbf{Integrazione per sostituzione}} \\
+						$ \int f(x) \, dx $ & $ \text{ponendo x } = g(t) $ \\
+						$ \text{da cui deriva } dx = g'(t) $ & $ \int f[g(t)] \cdot g'(t) $ \\
+						\multicolumn{2}{l}{\textbf{Integrazione delle funzioni razionali fratte}} \\
+						%\multicolumn{2}{l}{\textbf{}} \\
+						%$$ & $$ \\
+					\end{tabular}
+					\begin{enumerate}
+						\item \textsf{\small \textbf{DIVISIONE}. Se il grado del denominatore $>$ grado numeratore, allora \textbf{SALTO QUESTO PASSAGGIO}.}
+						\item \textsf{\small \textbf{FATTORIZZARE}, scomporre il denominatore in un prodotto di fattori di 1° grado.}
+						\item \textsf{\small \textbf{DECOMPORRE}, la frazione in frazioni semplici.}
+						\item \textsf{\small \textbf{INTEGRAZIONE}, delle varie parti.}
+					\end{enumerate}
+				\end{minipage}
+			};
+			%------------ Regole di Integrazione end ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Regole di Integrazione};
+		\end{tikzpicture}
+		
+		
+		%------------ Successioni begin ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Successioni}
+					\begin{itemize}
+						\item \textbf{Successione convergente}
+						\begin{itemize}
+							\item $ \lim\limits_{x \to +\infty} x_n = l $ \textsf{ (l limite finito)}
+						\end{itemize}
+						\item \textbf{Successione divergente}
+						\begin{itemize}
+							\item \textsf{ Se una successione ha limite infinito.}
+						\end{itemize}
+						\item \textbf{Successione oscillante}
+						\begin{itemize}
+							\item \textsf{ Il limite non esiste. $ \text{Esempio: } x_n = (-1)^n $ }
+							\item \textsf{ Possiamo dividerle in due gruppi: }
+							\begin{itemize}
+								\item \textsf{ \textbf{successioni regolari}: il limite per $n \to \infty $ esiste. }
+								\item \textsf{ \textbf{successioni irregolari}: il limite per $n \to \infty $ non esiste.}
+							\end{itemize}
+						\end{itemize}
+						\item \textbf{Successioni Monotone}
+						\begin{itemize}
+							\item \textsf{monotona crescente $ x_n \leq x_{n+1} \hspace{0.2cm} \forall n \in \mathbb{N}$}
+							\item \textsf{monotona decrescente $ x_n \geq x_{n+1} \hspace{0.2cm} \forall n \in \mathbb{N}$}
+							\item \textsf{strettamente monotona crescente $ x_n < x_{n+1} \hspace{0.2cm} \forall n \in \mathbb{N}$}
+							\item \textsf{strettamente monotona decrescente $ x_n > x_{n+1} \hspace{0.2cm} \forall n \in \mathbb{N}$}
+						\end{itemize}
+						\item \textbf{Successioni limitate e illimitate}
+						\begin{itemize}
+							\item $ \text{limitata se } \exists a,b \in \mathbb{R} \text{ tali che } \forall n \in \mathbb{N} \text{ vale che } x_n \in [a,b] $
+							\item \textsf{illimitata in caso contrario.}
+						\end{itemize}
+					\end{itemize}
+					\textbf{Gerarchie degli Infiniti} \\
+					$ n^k \hspace{0.1cm} (k > 0) \hspace{0.3cm} a^n \hspace{0.1cm} (a > 1) \hspace{0.3cm} n! \hspace{0.3cm} n^n $ \textsf{(in ordine decrescente da sinistra (più grande) a destra (più piccolo)).} \\
+				\end{minipage}
+			};
+			%------------ Successioni end ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Successioni};
+		\end{tikzpicture}
+	
+		% ------------- Serie begin ----------------------------------
+	
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\begin{itemize}
+						\item \textbf{Serie numerica}
+						\begin{itemize}
+							\item $ A_k := a_1 + a_2 + a_3 + \cdots + a_k = \displaystyle\sum_{n=1}^k a_n $
+							\item \textsf{La successione $ {A_k} $ viene detta \textbf{serie numerica}.}
+							\item \textsf{ La quantità $ A_k $ viene chiamata \textbf{somma parziale} k-\textbf{esima}, $ \forall k \in \mathbb{N} $}
+						\end{itemize}
+						\item \textbf{Serie Geometrica}
+						\begin{itemize}
+							\item $ \displaystyle \sum_{n=0}^+\infty q^n = \left\{ \begin{array}{lll}
+								+\infty & \mbox{$ \text{se } q \geq 1$} \\
+								\frac{1}{1-q} & \mbox{$ \text{se } \mid q \mid < 1$} \\ 
+							\textsf{oscilla} &  \mbox{$ \text{ se } q \leq 1 $} \end{array}\right. $
+						\end{itemize}
+						\item \textbf{Serie Armonica}
+						\begin{itemize}
+							\item $ \displaystyle\sum_{n=1}^+\infty \frac{1}{n} = +\infty $
+						\end{itemize}
+					\end{itemize}
+				\end{minipage}
+			};
+			%------------  Serie end ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Serie};
+		\end{tikzpicture}
+		
+		
+		%------------ Punti di non derivabilità begin ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Punto Angoloso} \\
+					$ \text{Se } \lim\limits_{x \to x_0-} f'(x) = m \text{ e } \lim\limits_{x \to x_0+} f'(x) = l \text{ con } m \neq l $ \\
+					$ \text{Allora } x_0 \text{ è un punto \color{red} angoloso\normalcolor.} $ \\
+					\textbf{Cuspide} \\
+					$ \text{Se } \lim\limits_{x \to x_0-} f'(x) = +\infty \text{ e } \lim\limits_{x \to x_0+} f'(x) = -\infty $ \\
+					$ \text{Allora } x_0 \text{ è una \color{red} cuspide con vertice in alto\normalcolor.} $ \\
+					$ \text{Se } \lim\limits_{x \to x_0-} f'(x) = -\infty \text{ e } \lim\limits_{x \to x_0+} f'(x) = +\infty $ \\
+					$ \text{Allora } x_0 \text{ è una \color{red} cuspide con vertice in basso\normalcolor.} $ \\
+					\textbf{Flesso} \\	
+					$ \text{Se } \lim\limits_{x \to x_0} f'(x) = +\infty $ \\
+					$ \text{Allora } x_0 \text{ è un \color{red} flesso a tangente verticale crescente\normalcolor.} $ \\
+					$ \text{Se } \lim\limits_{x \to x_0} f'(x) = -\infty $ \\
+					$ \text{Allora } x_0 \text{ è un \color{red} flesso a tangente verticale decrescente\normalcolor.} $ \\
+				\end{minipage}
+			};
+			%------------ Punti di non derivabilità end ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Punti di non derivabilità};
+		\end{tikzpicture}
+		
+		
+		%------------ Monotonia di una Funzione begin ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\begin{itemize}
+						\item \textsf{Determinare la sua derivata prima}
+						\item \textsf{Studiarne il segno. (disequazioni)}
+						\item \textsf{Applicare il teorema.}
+						\item \textsf{Descrivere la crescenza, decrescenza e punti di massimo e minimo relativi.}
+					\end{itemize}
+				\vphantom{} % per creare un box vuoto che ha height e depth passata come parametro, però forse bastava un \vspace
+				\end{minipage}
+			};
+			%------------ Monotonia di una Funzione end ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Monotonia di una funzione};
+		\end{tikzpicture}
+		
+		
+		%------------ Determinare i punti critici begin ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Punti critici:} \textsf{Massimo, Minimo, punto di sella, flesso.} \\
+					\textbf{Metodologia}:
+					\begin{itemize}
+						\item \textsf{Calcolare le derivate prime in base x ed y.}
+						\item \textsf{Mettere a sistema queste derivate.}
+						\item \textsf{Trovare gli eventuali punti.}
+						\item \textsf{Calcolare le derivate seconde e fare l'Hessiano.}
+						\item \textsf{Calcolare il determinante $ det(Hf(x,y)) = (f_{xx} \cdot f_{yy}) - (f_{xy} \cdot f_{yx}) $}
+						\item \textsf{Calcolo la $ f_{xx}(Punto) $.}
+						\item \textsf{Sostituisco il punto nel determinante: $ det(Hf(Punto)) $}
+						\item \textsf{In base ai risultati determino la natura del punto: }
+						\begin{itemize}
+							\item \textsf{determinante positivo, primo elemento positivo \textrightarrow \textbf{ punto di minimo relativo}}
+							\item \textsf{determinante positivo, primo elemento negativo \textrightarrow \textbf{ punto di massimo relativo}}
+							\item \textsf{determinante negativo \textrightarrow  \textbf{ punto di sella}}
+							\item \textsf{determinante nullo \textrightarrow \textbf{ il test è inconcludente}}
+						\end{itemize}
+					\end{itemize}
+				\end{minipage}
+			};
+			%------------  Determinare i punti critici end ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Determinare i punti critici};
+		\end{tikzpicture}
+		
+		
+		%------------ Tabella dei gradi ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Sine, Cosine, Tangent}
+					\begin{tabular}{cccccc}
+						\textbf{Funzione} & \textbf{0°} & \textbf{30°} & \textbf{45°} & \textbf{60°} & \textbf{90°} \\
+						\textsf{$\sin(\theta)$} & \textsf{0} & \textsf{$\frac{1}{2}$} & \textsf{$\frac{\sqrt{2}}{2}$} & \textsf{$\frac{\sqrt{3}}{2}$} & \textsf{1} \\
+						\textsf{$\cos(\theta)$} & \textsf{1} & \textsf{$\frac{\sqrt{3}}{2}$} & \textsf{$\frac{\sqrt{2}}{2}$} & \textsf{$\frac{1}{2}$} & \textsf{0} \\
+						\textsf{$\tan(\theta)$} & \textsf{0} & \textsf{$\frac{\sqrt{3}}{3}$} & \textsf{$1$} & \textsf{$\sqrt{3}$} & \textsf{undef.} \\
+					\end{tabular}
+				\end{minipage}
+			};
+			%------------ Tabella dei gradi Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Tabella dei gradi};
+		\end{tikzpicture}
+	
+			%------------ Arcotangente ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+						\textbf{Arctan} \\
+						\begin{tabular}{cccccccccc}
+							\textbf{Funzione} & \textbf{-90°} & \textbf{-60°} & \textbf{-45°} & \textbf{-30°} & \textbf{0°} & \textbf{30°} & \textbf{45°} & \textbf{60°} & \textbf{90°} \\
+							$ \arctan(\theta)$ & \textsf{$-\infty$} & $ -\sqrt{3} $ & $ -1 $ & $ -\frac{1}{\sqrt{3}} $ & 0 & $ +\frac{1}{\sqrt{3}} $ & $ 1 $ & $ +\sqrt{3} $ & $ +\infty $ \\
+							$ \pi = \text{180°} $ 
+							\textsf{} & \textsf{-$\frac{\pi}{2}$} & $ -\frac{\pi}{3} $ & $ -\frac{\pi}{4} $ & $ -\frac{\pi}{6} $ & 0 & $ +\frac{\pi}{6} $ & $ +\frac{\pi}{4} $ & $ +\frac{\pi}{3} $ & $ +\frac{\pi}{2} $ \\
+						\end{tabular}
+				\end{minipage}
+			};
+			%------------ Arcotangente Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Arcotangente};
+		\end{tikzpicture}
+		
+		%------------ Differenziabilità ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Determinare se una funzione è differenziabile}
+					\begin{itemize}
+						\item \textsf{Esistono le derivate parziali prime nel punto $ (x_0, y_0) $}
+						\item \textsf{$ \lim\limits_{(h,k) \to (0,0)} \frac{f(x_0 + h, y_0 + k) - f(x_0, y_0) - f_x(x_0, y_0)h - f_y(x_0, y_0)k}{\sqrt{h^2 + k^2}} = 0 $}
+					\end{itemize}
+				\end{minipage}
+			};
+			%------------ Differenziabilità Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Differenziabilità};
+		\end{tikzpicture}
+		
+		
+		%------------ Derivata direzionale ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Derivata direzionale rispetto a v nel punto $ (x_0, y_0) $: } \\
+					$ D_vf(x_0, y_0) = \lim\limits_{t \to 0} \frac{f(x_0 + t\cos(\theta), y_0 + t\sin(\theta)) - f(x_0, y_0)}{t} $ \\
+					Se chiamo $ g(f) := f(x_0 + t\cos(\theta), y_0 + t\sin(\theta)) $ \\
+					$ \Rightarrow D_vf(x_0, y_0) = \lim\limits_{t \to 0} \frac{g(t) - g(0)}{t} = g'(0) $ \\
+					(quindi fai la derivata prima e poi passi 0 a questa) \\
+				\end{minipage}
+			};
+			%------------ Derivata direzionale Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Derivata direzionale};
+		\end{tikzpicture}
+		
+		
+		%------------ Gradiente ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Teorema del Gradiente} \\
+					\textsf{Se f è differenziabile, allora esiste la derivata direzionale $ D_vf(x_0, y_0) $ e vale: } \\
+					$ D_vf(x_0, y_0) = \bigtriangledown f(x_0, y_0) \cdot v $ \\
+					$ \bigtriangledown $ \textsf{ (gradiente) significa, almeno nel piano cartesiano, semplicemente le derivate prime in base ad x e y.} \\
+					\textbf{Teorema Derivazione della Composizione} \\
+					$ \textsf{Sia } f:\mathbb{R}^2 \rightarrow \mathbb{R} \textsf{ differenziabile, sia } g:\mathbb{R} \rightarrow \mathbb{R} \textsf{ derivabile} $ \\
+					$ \bigtriangledown h(x, y) = g'(f(x, y)) \cdot \bigtriangledown f(x, y) $ \\
+				\end{minipage}
+			};
+			%------------ Gradiente Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Gradiente};
+		\end{tikzpicture}
+		
+		
+		%------------ Teoremi degli estremanti locali ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Teorema di Fermat} \\
+					\textsf{Se f è derivabile in c e c è un estremante locale allora: } \\
+					$ f'(c) = 0 $ \\
+					\textbf{Teorema di Rolle} \\
+					\textsf{Se f è continua su $ [a,b] $ e derivabile in $ (a, b) $ e $ f(a) = f(b) $ allora: } \\
+					$ \exists d \in (a, b) \textsf{ tale che } f'(d) = 0 $ \\
+					\textbf{Teorema di Lagrange} \\
+					\textsf{Sia $ f:[a, b] \rightarrow \mathbb{R} $, continua in $ [a, b] $ e derivabile in $ (a, b) $ Allora: } \\
+					$ \exists d \in (a, b) \textsf{ tale che } f(b) - f(a) = f'(d)(b - a)$ \\ \\ %\vspace{0.9cm} % oppure usare due //
+				\end{minipage}
+			};
+			%------------ Teoremi degli estremanti locali Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Teoremi degli estremanti locali};
+		\end{tikzpicture}
+		
+		%------------ Esistenza e Calcolo del Piano Tangente in due variabili ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					$ \textsf{Data una funzione } f(x, y) \textsf{ e un punto } (x_0, y_0). $ \\
+					\textsf{ Il piano che contiene entrambe le rette è dato da: } \\
+					$ z = f(v_0, y_0) + \frac{\partial f}{\partial x}(x_0, y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0)(y - y_0) $ \\
+				\end{minipage}
+			};
+			%------------ Esistenza e Calcolo del Piano Tangente in due variabili Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Esistenza e Calcolo del Piano Tangente in due variabili};
+		\end{tikzpicture}
+		
+		
+		%------------ Asintoti ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Asintoti verticali} \\
+					$ \lim \limits_{x \to c\pm} f(x) = \pm\infty $ \\
+					$ c \in \mathbb{R} $ \\
+					\textbf{Asinti orizzontali} \\
+					$ \lim\limits_{x \to \pm\infty} f(x) = l \in \mathbb{R} $ \\
+					\textbf{Asintoti Obliqui} 
+					\begin{itemize}
+						\item $ \lim\limits_{x \to \pm\infty} f(x) = \pm\infty $
+						\item $ \textsf{Se } \lim\limits_{x \to \pm\infty} \frac{f(x)}{x} = m \in \mathbb{R} $ 
+						\item $ \textsf{Se } \lim\limits_{x \to \pm\infty} (f(x) - mx) = q \in \mathbb{R} $ 
+						\item \textsf{Allora ho un asintoto obliquo di equazione: $ y = mx + q $} 
+					\end{itemize}
+				\end{minipage}
+			};
+			%------------ Asintoti Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Asintoti};
+		\end{tikzpicture}
+		
+		%------------ O-Piccolo ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					$ \textsf{Diciamo che } f(x) = o(g(x)) \textsf{ per } x \rightarrow c $ \\
+					$ \textsf{ se } \lim\limits_{x \to c} \frac{f(x)}{g(x)} = 0 $ \\
+					$ \textsf{es: } x^3 = o(x^2) \textsf{ per } x \rightarrow 0 $ \\
+					$ \textsf{es: } x^2 = o(x^3) \textsf{ per } x \rightarrow \infty $
+				\end{minipage}
+			};
+			%------------ O-Piccolo Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {O-Piccolo};
+		\end{tikzpicture}
+		
+		
+		%------------ Equazioni differenziali ---------------
+		\begin{tikzpicture}
+			\node [mybox] (box){%
+				\large\begin{minipage}{0.46\textwidth}
+					\textbf{Modello di Malthus} \\
+					\textsf{È stato il primo modello di dinamica delle popolazioni a essere introdotto ed è il più semplice modello di crescita esponenziale.} \\
+					\textsf{tasso r costante.} \\
+					$ N(t) = \textsf{ numero di individui al tempo t.} $ \\
+					$ N'(t) = rN(t) \Rightarrow N(t) = ce^{rt}  \textsf{ è la soluzione. } $ \\
+					
+					\textbf{Equazioni Differenziali del I Ordine Omogenee} \\
+					\textsf{È un'equazione che ha per incognita una funzione $ y = f(x) $ e che stabilisce una relazione tra la variabile indipendente x, la funzione incognita f(x) e almeno una delle sue derivate.} \\
+					
+					\textbf{Integrale Generale (o soluzione generale)} \\
+					\textsf{Insieme di tutte le funzioni $ y = f(x) $ che risolvono l'equazione.} \\
+					
+					\textbf{Soluzione particolare} \\
+					\textsf{È una determinata funzione che risolve l'equazione.} \\
+					
+					\textbf{Problema di Cauchy} \\
+					\textsf{È la \textbf{soluzione particolare} di un'equazione differenziale di una funzione $ y = f(x) $ in cui la curva integrale passa per un punto assegnato $ (x_0, y_0) $ } \\
+					\begin{equation*}
+						\begin{cases*}
+							y' = F(x; y) \\
+							y_0 = f(x_0) \\
+						\end{cases*}
+					\end{equation*}
+				
+					\textsf{La condizione $ y_0 = f(x_0) $ è detta \textbf{condizione iniziale} del problema di Cauchy.} \\
+					\textsf{Individuare la funzione $ y = f(x) $ che soddisfa l'equazione differenziale e passa per il punto $ (x_0, y_0) $ } \\
+				
+					\textbf{Equazioni differenziali a variabili separabili} \\
+					\textsf{Quando può essere scritta nella forma $ y' = g(x) \cdot h(y) $, con $ g(x) $ e $ h(y) $ funzioni continue.}
+					\begin{enumerate}
+						\item \textsf{Separo le variabili y e x}
+						\item \textsf{Integro ciascun membro}
+					\end{enumerate}
+					
+					\textbf{Equazioni differenziali lineari} \\
+					\textsf{Quando la funzione incognita $ y $ e la sua derivata prima $ y' $ compaiono solamente in termini di primo grado.} \\
+				\end{minipage}
+			};
+			%------------ Equazioni differenziali Header ---------------------
+			\node[fancytitle, right=10pt] at (box.north west) {Equazioni differenziali};
+		\end{tikzpicture}
+		
+		\vfill\null
+		\columnbreak
+		
+	\end{multicols*}
+\end{document}
